@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+:root {
+    font-family: system-ui, times-new-roman, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: greyscale;
+
+    --bg: #0c1118;
+    --card: #1a1f29;
+    --accent: #7c8ea3;
+    --text: #e1e6ed;
+    --text-muted: #b0b9c5;
+    --border: #2c3440;
+}
+.dark {
+    --bg: #0c1118;
+    --card: #1a1f29;
+    --accent: #7c8ea3;
+    --text: #e1e6ed;
+    --text-muted: #b0b9c5;
+    --border: #2c3440;
+}
+.light {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --accent: #8baecd;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --border: #cbd5e1;
+}
+.classic{
+    --bg: #ffffff;
+    --card: #f9f9f9;
+    --accent: #000000;
+    --text: #000000;
+    --text-muted: #4b5563;
+    --border: #d1d5db;
+}
+body {
+    @apply text-base bg-[var(--bg)] text-[var(--text)];
+}
+h1 {
+    @apply text-3xl font-bold;
+}
+a {
+    @apply text-[var(--accent)] hover:underline;
+}
+
+/*
+Banner classes
+*/
+
+  .banner-container {
+    @apply fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 py-2;
+    background-color: var(--bg);
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .banner-logo {
+    @apply h-[50px] w-auto align-middle cursor-pointer;
+  }
+
+  .banner-link-group {
+    @apply flex items-center gap-4 font-medium;
+  }
+
+  .dropdown-menu {
+    @apply absolute top-full right-0 mt-2 w-40 p-2 flex flex-col z-50 shadow rounded;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .dropdown-item {
+    @apply px-2 py-2 rounded hover:underline;
+    color: var(--text);
+  }
+
+/*
+Footer classes
+*/
+
+.footer {
+  @apply w-full text-center py-6 px-4 flex flex-col md:flex-row items-center justify-between gap-6 border-t;
+  background-color: var(--card);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+.footer-logo {
+    @apply h-10 w-auto cursor-pointer;
+}
+.footer-section {
+    @apply text-center md:text-left;
+}
+.footer-link {
+    @apply text-[var(--text-muted)] hover:text-[var(--text)] hover:underline;
+}
+/*
+welcome classes
+*/
+
+.welcome-container{
+    @apply text-center py-20 px-6 max-w-3xl mx-auto;
+    color: var(--text);
+}
+.welcome-heading {
+    @apply text-4xl font-extrabold mb-6;
+}
+.welcome-description {
+    @apply text-lg font-medium mb-4;
+}
+.welcome-wip {
+    @apply text-base font-semibold text-[var(--accent)] animate-pulse;
+}
+
+/*end of component layers */
+}
+/* end of component layers */
