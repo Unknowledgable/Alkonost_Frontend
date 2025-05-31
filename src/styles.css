@@ -115,7 +115,20 @@ welcome classes
 .welcome-wip {
     @apply text-base font-semibold text-[var(--accent)] animate-pulse;
 }
+/*
+buttons
+*/
 
+.rec-button{
+    @apply cursor-pointer px-4 py-1 rounded-md font-semibold transition
+          duration-150 ease-in-out
+          focus:outline-none
+          hover:brightness-105
+          active:scale-95;
+}
+.rec-button-active {
+    @apply ring-2 ring-yellow-400 scale-105
+}
 /*end of component layers */
 }
 /* end of component layers */

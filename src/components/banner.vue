@@ -1,6 +1,14 @@
 <script setup>
+import { onMounted, onBeforeUnmount } from 'vue'
 import { useBannerStore } from '@/stores/banner'
 const banner = useBannerStore()
+onMounted(() => {
+  document.addEventListener('click', banner.handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', banner.handleClickOutside)
+})
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-      <a href="/home">
+      <a>
         <img class="footer-logo" src="../assets/Alkonost_icon.png" alt="Alkonost Logo" />
       </a>
 

@@ -1,11 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { handleImageClick } from '@/stores/splash_body.js'
-
+import splashImage from '@/assets/Alkonost_large.png'
 const showImage = ref(true)
 const clickCount = ref(0)
-
-const logoURL = new URL('@/assets/alkonost-large.png', import.meta.url).href
 
 function toggleImage() {
   handleImageClick(clickCount, showImage)
@@ -23,7 +21,7 @@ function toggleImage() {
     <p class="text-lg font-semibold mb-2">Clicks: {{ clickCount }}</p>
     <img
       v-if="showImage"
-      :src="logoURL"
+      :src="splashImage"
       alt="Alkonost"
       class="w-80 cursor-pointer transition-transform hover:scale-105"
       @click="toggleImage"
