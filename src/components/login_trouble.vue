@@ -40,3 +40,4 @@ async function recover(type) {
   }
 }
 </script>
+2
