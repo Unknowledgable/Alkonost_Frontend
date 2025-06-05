@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-:root {
+  :root {
     font-family: system-ui, times-new-roman, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: greyscale;
@@ -14,45 +14,95 @@
     --text: #e1e6ed;
     --text-muted: #b0b9c5;
     --border: #2c3440;
-}
-.dark {
+  }
+  .dark {
     --bg: #0c1118;
     --card: #1a1f29;
     --accent: #7c8ea3;
     --text: #e1e6ed;
     --text-muted: #b0b9c5;
     --border: #2c3440;
-}
-.light {
+  }
+  .light {
     --bg: #f0f4f8;
     --card: #ffffff;
     --accent: #8baecd;
     --text: #1f2937;
     --text-muted: #6b7280;
     --border: #cbd5e1;
-}
-.classic{
+  }
+  .classic {
     --bg: #ffffff;
     --card: #f9f9f9;
     --accent: #000000;
     --text: #000000;
     --text-muted: #4b5563;
     --border: #d1d5db;
-}
-body {
+  }
+  body {
     @apply text-base bg-[var(--bg)] text-[var(--text)];
-}
-h1 {
+  }
+  h1 {
     @apply text-3xl font-bold;
-}
-a {
+  }
+  a {
     @apply text-[var(--accent)] hover:underline;
+  }
 }
+@layer components {
+  /*
+    default
+  */
+  .default-container {
+    @apply bg-[var(--bg)]
+           text-[var(--text)]
+           font-sans
+           min-h-screen
+           px-4
+           sm:px-6
+           lg:px-8;
+  }
 
-/*
-Banner classes
-*/
+  .default-card {
+    @apply bg-[var(--card)]
+           border
+           border-[var(--border)]
+           rounded-lg
+           p-6
+           drop-shadow-sm;
+  }
 
+  .default-heading {
+    @apply text-2xl
+           font-semibold
+           mb-4
+           text-[var(--text)];
+  }
+
+  .default-text {
+    @apply text-[var(--text-muted)]
+           leading-relaxed
+           mb-4;
+  }
+
+  .default-button {
+    @apply cursor-pointer
+           px-4
+           py-2
+           rounded-md
+           font-semibold
+           transition
+           duration-150
+           ease-in-out
+           focus:outline-none
+           hover:brightness-105
+           active:scale-95
+           bg-[var(--accent)]
+           text-[var(--text)];
+  }
+  /*
+    Banner Classes
+  */
   .banner-container {
     @apply fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 py-2;
     background-color: var(--bg);
@@ -79,63 +129,104 @@ Banner classes
     color: var(--text);
   }
 
-/*
-Footer classes
-*/
-
-.footer {
-  @apply w-full text-center py-6 px-4 flex flex-col md:flex-row items-center justify-between gap-6 border-t;
-  background-color: var(--card);
-  color: var(--text-muted);
-  border-top: 1px solid var(--border);
-}
-.footer-logo {
+  /*
+    Footer Classes
+  */
+  .footer {
+    @apply w-full text-center py-6 px-4 flex flex-col md:flex-row items-center justify-between gap-6 border-t;
+    background-color: var(--card);
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo {
     @apply h-10 w-auto cursor-pointer;
-}
-.footer-section {
+  }
+  .footer-section {
     @apply text-center md:text-left;
-}
-.footer-link {
+  }
+  .footer-link {
     @apply text-[var(--text-muted)] hover:text-[var(--text)] hover:underline;
-}
-/*
-welcome classes
-*/
-
-.welcome-container{
+  }
+  /*
+    Welcome Section Classes
+  */
+  .welcome-container {
     @apply text-center py-20 px-6 max-w-3xl mx-auto;
     color: var(--text);
-}
-.welcome-heading {
+  }
+  .welcome-heading {
     @apply text-4xl font-extrabold mb-6;
-}
-.welcome-description {
+  }
+  .welcome-description {
     @apply text-lg font-medium mb-4;
-}
-.welcome-wip {
+  }
+  .welcome-wip {
     @apply text-base font-semibold text-[var(--accent)] animate-pulse;
-}
-/*
-buttons
-*/
+  }
+  /*
+    Button Utilities
+  */
+  .rec-button {
+    @apply cursor-pointer
+           px-4
+           py-1
+           rounded-md
+           font-semibold
+           transition
+           duration-150
+           ease-in-out
+           focus:outline-none
+           hover:brightness-105
+           active:scale-95;
+  }
 
-.rec-button{
-    @apply cursor-pointer px-4 py-1 rounded-md font-semibold transition
-          duration-150 ease-in-out
-          focus:outline-none
-          hover:brightness-105
-          active:scale-95;
-}
-.rec-button-active {
-    @apply ring-2 ring-yellow-400 scale-105
-}
-/*
-login component
-*/
+  .rec-button-active {
+    @apply ring-2 ring-yellow-400 scale-105;
+  }
+  /*
+    Login Components
+  */
 
-/*
-modal blanks
-*/
-/*end of component layers */
+
+  /*
+    Modal Classes
+  */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center;
+  }
+
+  .modal-content {
+    @apply bg-[var(--card)]
+           text-[var(--text)]
+           rounded-lg
+           shadow-lg
+           max-w-lg
+           w-full
+           mx-4
+           p-6
+           z-10;
+  }
+
+  /*
+    Collapsible Classes
+  */
+  .collapsible {
+    @apply border border-[var(--border)] rounded-lg overflow-hidden;
+  }
+
+  .collapsible-header {
+    @apply flex justify-between items-center
+           bg-[var(--card)]
+           px-4
+           py-2
+           cursor-pointer
+           hover:bg-[var(--border)];
+  }
+
+  .collapsible-body {
+    @apply bg-[var(--bg)]
+           p-4
+           text-[var(--text)];
+  }
 }
 /* end of component layers */

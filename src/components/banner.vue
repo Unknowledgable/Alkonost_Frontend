@@ -1,37 +1,24 @@
-<script setup>
-import { onMounted, onBeforeUnmount } from 'vue'
-import { useBannerStore } from '@/stores/banner'
-const banner = useBannerStore()
-onMounted(() => {
-  document.addEventListener('click', banner.handleClickOutside)
-})
-
-onBeforeUnmount(() => {
-  document.removeEventListener('click', banner.handleClickOutside)
-})
-</script>
-
 <template>
   <div class="banner-container">
     <a href="/home" class="flex items-center">
-      <img class="banner-logo" :src="banner.logoURL" alt="Alkonost" />
+      <img class="banner-logo" :src="logoURL" alt="Alkonost" />
       Alkonost
     </a>
 
     <div class="banner-link-group">
-      <template v-if="banner.userLoggedIn">
+      <template v-if="userLoggedIn">
         <div class="relative">
           <button
-            :ref="banner.toggleRef"
-            @click="banner.toggleDropdown"
+            ref="toggleRef"
+            @click="toggleDropdown"
             class="cursor-pointer"
           >
-            Profile <span :class="{ 'rotate-180': banner.dropdownOpen }">⌄</span>
+            Profile <span :class="{ 'rotate-180': dropdownOpen }">⌄</span>
           </button>
 
           <div
-            v-if="banner.dropdownOpen"
-            :ref="banner.dropdownRef"
+            v-if="dropdownOpen"
+            ref="dropdownRef"
             class="dropdown-menu"
           >
             <a href="/profile" class="dropdown-item">My Profile</a>
@@ -47,3 +34,37 @@ onBeforeUnmount(() => {
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+const dropdownOpen = ref(false)
+const userLoggedIn = ref(false)
+import logoPath from '@/assets/Alkonost_icon.png'
+const logoURL = logoPath
+const dropdownRef = ref(null)
+const toggleRef = ref(null)
+
+function toggleDropdown() {
+    dropdownOpen.value = !dropdownOpen.value
+}
+function handleClickOutside(event) {
+    if (
+      dropdownOpen.value &&
+      !dropdownRef.value?.contains(event.target) &&
+      !toggleRef.value?.contains(event.target)
+    ) {
+      dropdownOpen.value = false
+    }
+  }
+
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
+
+</script>

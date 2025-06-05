@@ -28,6 +28,11 @@ const routes = [
   path: '/user_preferences',
   component: Preferences,
   },
+  {
+  name: 'signin page',
+  path: '/signin',
+  component: Login
+  },
 ]
 
 const router = createRouter({

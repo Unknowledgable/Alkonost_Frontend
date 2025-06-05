@@ -15,7 +15,7 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { recoverUsernameAPI, resetPasswordAPI, sendOTPAPI } from '@/utils/api.js'
+import { recoverUsernameAPI, resetPasswordAPI, sendOTPAPI } from '@/utils/apiCalls.js'
 
 const loading = ref(false)
 const error = ref('')
@@ -40,4 +40,3 @@ async function recover(type) {
   }
 }
 </script>
-2

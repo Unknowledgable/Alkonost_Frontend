@@ -4,7 +4,7 @@
       <h1>Welcome to The Alkonost Project!</h1>
       <p>Please enter your details.</p>
 
-      <form @submit.prevent="submitLogin">
+      <form @submit.prevent="submitLoginHandler">
         <input
           v-model="email"
           type="email"
@@ -41,7 +41,7 @@
         Trouble Signing in?
         <a href="#" @click.prevent="showTrouble = true">Recovery</a>
             <Modal :isOpen="showTrouble" @close="showTrouble = false">
-                <loginTrouble />
+                <LoginTrouble />
             </Modal>
       </div>
     </div>
@@ -50,13 +50,32 @@
 
 <script setup>
 import { ref } from 'vue'
-import { submitLogin, googleLogin } from '@/utils/userAuthentication.js'
+import { useRouter } from 'vue-router'
+import { submitLogin, googleAuthLogin } from '@/utils/apiCalls.js'
 import Modal from '@/components/modal.vue'
 import LoginTrouble from '@/components/login_trouble.vue'
-import SignUp from '@component/signup.vue'
-
+import SignUp from '@/components/signup.vue'
 
 const email = ref('')
 const password = ref('')
 const remember = ref(false)
+const showTrouble = ref(false)
+const showSignup = ref(false)
+
+const router = useRouter()
+
+
+function submitLoginHandler() {
+    submitLogin({
+        email: email.value,
+        password: password.value,
+        remember: remember.value
+      })
+    .then(() => {
+        router.push({ name: '/home'})
+    })
+    .catch(e => {
+        console.error(e)
+    })
+}
 </script>
