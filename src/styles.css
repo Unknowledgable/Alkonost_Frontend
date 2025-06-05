@@ -129,6 +129,13 @@ buttons
 .rec-button-active {
     @apply ring-2 ring-yellow-400 scale-105
 }
+/*
+login component
+*/
+
+/*
+modal blanks
+*/
 /*end of component layers */
 }
 /* end of component layers */

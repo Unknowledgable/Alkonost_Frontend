@@ -1,6 +1,6 @@
 import { ref, onMounted } from 'vue'
 import RecommendationCard from '@/components/RecommendationCard.vue'
-import { fisherYatesShuffle } from '@/stores/recommendation_card.js'
+import { fisherYatesShuffle } from '@/utils/recommendation_card.js'
 
 const recs = ref([])
 
