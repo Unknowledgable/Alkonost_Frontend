@@ -29,7 +29,7 @@
       </template>
 
       <template v-else>
-        <a href="/login" class="hover:underline">Sign in</a>
+        <a href="/Login" class="hover:underline">Sign in</a>
       </template>
     </div>
   </div>

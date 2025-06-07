@@ -1,9 +1,9 @@
 <template>
-  <div class="trouble-container">
+  <div class="login-container">
     <h2>Having Trouble Logging In?</h2>
     <p>What do you want to recover?</p>
 
-    <div class="trouble-options">
+    <div class="login-form-section">
       <button @click="recover('username')">Recover Username</button>
       <button @click="recover('password')">Reset Password</button>
       <button @click="recover('otp')">Use One-Time Password (OTP)</button>

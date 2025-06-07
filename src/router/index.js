@@ -4,7 +4,7 @@ import Profile from '@/views/Profile.vue'
 import Preferences from '@/views/Preferences.vue'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
-
+import Signup from '@/views/Signup.vue'
 
 const routes = [
   {
@@ -30,9 +30,14 @@ const routes = [
   },
   {
   name: 'signin page',
-  path: '/signin',
+  path: '/login',
   component: Login
   },
+  {
+  name: 'signup page',
+  path: '/signup',
+  component: Signup
+  }
 ]
 
 const router = createRouter({

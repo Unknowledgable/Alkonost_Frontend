@@ -43,7 +43,7 @@
     @apply text-base bg-[var(--bg)] text-[var(--text)];
   }
   h1 {
-    @apply text-3xl font-bold;
+    @apply text-3xl font-bold text-[var(--text)];
   }
   a {
     @apply text-[var(--accent)] hover:underline;
@@ -99,6 +99,21 @@
            active:scale-95
            bg-[var(--accent)]
            text-[var(--text)];
+  }
+  .default-input {
+    @apply block
+           w-full
+           px-3
+           py-2
+           bg-[var(--card)]
+           text-[var(--text)]
+           placeholder-[var(--text-muted)]
+           border
+           border-[var(--border)]
+           rounded-md
+           focus:outline-none
+           focus:ring-2
+           focus:ring-[var(--accent)];
   }
   /*
     Banner Classes
@@ -192,21 +207,46 @@
     Modal Classes
   */
   .modal-overlay {
-    @apply fixed inset-0 bg-black/50 flex items-center justify-center;
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .modal-overlay-enter-from,
+  .modal-overlay-leave-to{
+    opacity: 0;
+  }
+  .modal-overlay-enter-to,
+  .modal-overlay-leave-from{
+    opacity: 1;
   }
 
   .modal-content {
     @apply bg-[var(--card)]
            text-[var(--text)]
-           rounded-lg
-           shadow-lg
-           max-w-lg
-           w-full
-           mx-4
-           p-6
-           z-10;
+           border
+         border-[var(--border)]
+         rounded-2xl
+         shadow-[0_8px_16px_var(--accent)]
+         max-w-lg
+         w-full
+         mx-4
+         p-6
+         z-10
+         transform
+         scale-95
+         transition
+         duration-200
+         ease-out;
   }
-
+    .modal-content-enter-from,
+    .modal-content-leave-to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    modal-content-enter-to,
+    .modal-content-leave-from {
+        opacity: 1;
+        transform: scale(1);
+    }
   /*
     Collapsible Classes
   */
@@ -229,4 +269,54 @@
            text-[var(--text)];
   }
 }
+/*
+    Login Classes
+  */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg);
+    padding: 1rem;
+  }
+  .login-form-section {
+  background-color: var(--card);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px var(--accent);
+  width: 100%;
+  max-width: 24rem;
+  box-sizing: border-box;
+  }
+  .login-form-section input[type="email"],
+  .login-form-section input[type="password"],
+  .login-form-section input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+  color: var(--accent);
+  }
+  .login-form-section button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--bg);
+  color: var(--accent);
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  }
+  .login-input {
+    @apply w-full px-3 py-2 mb-4
+           bg-[var(--accent)] text-[var(--text)] placeholder-[var(--text-muted)]
+           border border-[var(--border)] rounded-md
+           focus:outline-none focus:ring-2 focus:ring-[var(--accent)];
+  }
 /* end of component layers */
